@@ -1,8 +1,32 @@
-% Exercice 8 : scheduling
+% Exercice 8 : scheduling. Minimization of the right-most variables in list
+find_dates :-
+	L = [A, B, C, D, E, F, G, H, I, J],
+	fd_domain(L, 0, 50),
 
-schedule :- find_dates(0).
+	% requirement constraints
+	A #= 0,
+	B #>= A + 7,
+	C #>= B + 3,
+	D #>= A + 7,
+	E #>= C + 1,
+	E #>= D + 8,
+	F #>= C + 1,
+	F #>= D + 8,
+	G #>= C + 1,
+	G #>= D + 8,
+	H #>= F + 1,
+	I #>= H + 3,
+	J #>= E + 3,
+	J #>= G + 1,
+	J #>= I + 2,
 
-find_dates(T):-
+	fd_labeling(L),
+	write(L).
+
+% Exercice 8 : other solution. Giving a fixed duration
+schedule :- find_dates_given_duration(0).
+
+find_dates_given_duration(T):-
 	L = [A, B, C, D, E, F, G, H, I, J],
 	fd_domain(L, 0, 50),
 
@@ -38,6 +62,6 @@ find_dates(T):-
 	fd_labeling(L),
 	write(L).
 
-find_dates(T):-
+find_dates_given_duration(T):-
 	T2 is T + 1,
 	find_dates(T2).
