@@ -1,4 +1,4 @@
-% Exercice  : 1=Bleu, 2=Rouge, 3=Jaune, 4=Vert
+% Exercice 7 : 1=Bleu, 2=Rouge, 3=Jaune, 4=Vert
 color_map :-
 	L = [R1, R2, R3, R4, R5, R6],
 	fd_domain(L, 1, 4),
