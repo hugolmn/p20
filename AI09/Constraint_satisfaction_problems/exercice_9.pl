@@ -17,5 +17,6 @@ carre_magique :-
 	N #= A + E + I,
 	N #= G + E + C,
 
-	fd_labeling(L),
+	fd_labeling(L, [variable_method(smallest), backtracks(Backtracks)]),
+	write(Backtracks), nl,
 	write(L).
